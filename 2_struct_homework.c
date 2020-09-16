@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 typedef struct {
-	char sub[100]; // °ú¸ñ¸í 
-	char pro[100]; // ´ã´ç±³¼ö¸í 
-	char score[20]; // ÇĞÁ¡ 
+	char sub[100]; // ê³¼ëª©ëª… 
+	char pro[100]; // ë‹´ë‹¹êµìˆ˜ëª… 
+	char score[20]; // í•™ì  
 }sub_info;
 
 sub_info* allocMem(int n) {
@@ -14,7 +14,7 @@ sub_info* allocMem(int n) {
 	p = (sub_info*)malloc(sizeof(sub_info) * n);
 
 	if (p == NULL) {
-		printf("¿À·ù ¹ß»ı\n"); exit(1);
+		printf("ì˜¤ë¥˜ ë°œìƒ\n"); exit(1);
 	}
 
 	return p;
@@ -23,34 +23,33 @@ sub_info* allocMem(int n) {
 void get_info(sub_info* p, int n) {
 
 	for (int i = 0; i < n; i++) {
-		printf("°ú¸ñ¸í : "); getchar(); gets(p[i].sub);
-		printf("´ã´ç ±³¼ö¸í : "); scanf("%s", p[i].pro);
-		printf("ÇĞÁ¡ : "); scanf("%s", p[i].score);
+		printf("ê³¼ëª©ëª… : "); getchar(); gets(p[i].sub);
+		printf("ë‹´ë‹¹ êµìˆ˜ëª… : "); scanf("%s", p[i].pro);
+		printf("í•™ì  : "); scanf("%s", p[i].score);
 	}
 }
 
 int main() {
 
-	int sub_num; // °ú¸ñÀÇ °³¼ö 
-	sub_info* p; // ±¸Á¶Ã¼ sub_info¸¦ °¡¸®Å°´Â ±¸Á¶Ã¼ Æ÷ÀÎÅÍ p 
+	int sub_num; // ê³¼ëª©ì˜ ê°œìˆ˜ 
+	sub_info* p; // êµ¬ì¡°ì²´ sub_infoë¥¼ ê°€ë¦¬í‚¤ëŠ” êµ¬ì¡°ì²´ í¬ì¸í„° p 
 
-	printf("¼ö°­½ÅÃ»ÇÑ °ú¸ñÀÇ °³¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+	printf("ìˆ˜ê°•ì‹ ì²­í•œ ê³¼ëª©ì˜ ê°œìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 	scanf("%d", &sub_num);
 
-	p = allocMem(sub_num); // p´Â ½ÃÀÛÁÖ¼Ò¸¦ °¡Áø´Ù. p´Â ¹è¿­Ã³·³ »ç¿ë °¡´ÉÇÏ´Ù
+	p = allocMem(sub_num); // pëŠ” ì‹œì‘ì£¼ì†Œë¥¼ ê°€ì§„ë‹¤. pëŠ” ë°°ì—´ì²˜ëŸ¼ ì‚¬ìš© ê°€ëŠ¥í•˜ë‹¤
 
-	get_info(p, sub_num); // ¼ö°­½ÅÃ» Á¤º¸ ÀÛ¼º 
+	get_info(p, sub_num); // ìˆ˜ê°•ì‹ ì²­ ì •ë³´ ì‘ì„± 
 
-	printf("------------- ¼ö°­½ÅÃ» °ú¸ñ ---------------\n");
+	printf("------------- ìˆ˜ê°•ì‹ ì²­ ê³¼ëª© ---------------\n");
 
 	for (int i = 0; i < sub_num; i++) {
-		printf("°ú¸ñ¸í : %s\n", p[i].sub);
-		printf("´ã´ç ±³¼ö¸í : %s\n", p[i].pro);
-		printf("ÇĞÁ¡ : %s\n\n", p[i].score);
+		printf("ê³¼ëª©ëª… : %s\n", p[i].sub);
+		printf("ë‹´ë‹¹ êµìˆ˜ëª… : %s\n", p[i].pro);
+		printf("í•™ì  : %s\n\n", p[i].score);
 	}
 
 	free(p);
 
 	return 0;
-
 }
