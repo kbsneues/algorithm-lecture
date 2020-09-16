@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ent_integer(); // »ç¿ëÀÚ¿¡°Ô ¸î °³ÀÇ Á¤¼ö¸¦ Ã³¸®ÇÒ °ÍÀÎÁö ¹°¾îº¸´Â ÇÔ¼ö 
-int* arr_alloc(int); // ¹è¿­À» µ¿ÀûÀ¸·Î ÇÒ´ç ¹Ş¾Æ ±× ½ÃÀÛÁÖ¼Ò¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼ö 
-void ent_array(int*, int); // ¹è¿­ÀÇ ½ÃÀÛÁÖ¼Ò¿Í ¿ø¼ÒÀÇ °³¼ö n°³ÀÇ Á¤¼ö¸¦ Å°º¸µå·ÎºÎÅÍ ÀÔ·Â¹Ş¾Æ ¹è¿­¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö 
-double retur_ave(int*, int); // ¹è¿­ÀÇ ½ÃÀÛÁÖ¼Ò¿Í ¿ø¼ÒÀÇ °³¼ö nÀ» ¸Å°³º¯¼ö·Î ¹Ş¾Æ ±× Æò±ÕÀ» ¹İÈ¯ÇÏ´Â ÇÔ¼ö 
+int ent_integer(); // ì‚¬ìš©ìì—ê²Œ ëª‡ ê°œì˜ ì •ìˆ˜ë¥¼ ì²˜ë¦¬í•  ê²ƒì¸ì§€ ë¬¼ì–´ë³´ëŠ” í•¨ìˆ˜ 
+int* arr_alloc(int); // ë°°ì—´ì„ ë™ì ìœ¼ë¡œ í• ë‹¹ ë°›ì•„ ê·¸ ì‹œì‘ì£¼ì†Œë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ 
+void ent_array(int*, int); // ë°°ì—´ì˜ ì‹œì‘ì£¼ì†Œì™€ ì›ì†Œì˜ ê°œìˆ˜ nê°œì˜ ì •ìˆ˜ë¥¼ í‚¤ë³´ë“œë¡œë¶€í„° ì…ë ¥ë°›ì•„ ë°°ì—´ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ 
+double retur_ave(int*, int); // ë°°ì—´ì˜ ì‹œì‘ì£¼ì†Œì™€ ì›ì†Œì˜ ê°œìˆ˜ nì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ ê·¸ í‰ê· ì„ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ 
 
 int ent_integer() {
 
 	int kbs;
-	printf("¸î °³ÀÇ Á¤¼ö¸¦ ÀÔ·ÂÇÒ±î¿ä? : ");
+	printf("ëª‡ ê°œì˜ ì •ìˆ˜ë¥¼ ì…ë ¥í• ê¹Œìš”? : ");
 	scanf("%d", &kbs);
 
 	return kbs;
@@ -20,7 +20,7 @@ int* arr_alloc(int n) {
 	int* kbs;
 	kbs = (int*)malloc(sizeof(int) * n);
 	if (kbs == NULL) {
-		printf("¿À·ù ¹ß»ı"); exit(1);
+		printf("ì˜¤ë¥˜ ë°œìƒ"); exit(1);
 	}
 
 	return kbs;
@@ -29,7 +29,7 @@ int* arr_alloc(int n) {
 void ent_array(int* p, int n) {
 
 	for (int i = 0; i < n; i++) {
-		printf("%d¹øÂ° Á¤¼ö ÀÔ·Â : ", i + 1);
+		printf("%dë²ˆì§¸ ì •ìˆ˜ ì…ë ¥ : ", i + 1);
 		scanf("%d", p + i);
 	}
 
@@ -55,7 +55,7 @@ int main() {
 
 	ent_array(kbs, n);
 
-	printf("¹è¿­ÀÇ Æò±ÕÀº %.2f", retur_ave(kbs, n));
+	printf("ë°°ì—´ì˜ í‰ê· ì€ %.2f", retur_ave(kbs, n));
 
 	free(kbs);
 
