@@ -61,18 +61,18 @@ preorder_iter(TreeNode* root) {
 
 void main() {
 	
-	TreeNode n3 = {" 1.1. ¾Ë°í¸®Áò",NULL,NULL};
-	TreeNode n4 = {" 1.2. UNIX ÇÁ·Î±×·¡¹Ö",NULL,NULL};
-	TreeNode n2 = {"1. Àü°øÇÊ¼ö",&n3,&n4};
+	TreeNode n3 = {" 1.1. ì•Œê³ ë¦¬ì¦˜",NULL,NULL};
+	TreeNode n4 = {" 1.2. UNIX í”„ë¡œê·¸ëž˜ë°",NULL,NULL};
+	TreeNode n2 = {"1. ì „ê³µí•„ìˆ˜",&n3,&n4};
 
-	TreeNode n6 = {" 2.1. È®·ü°ú Åë°è",NULL,NULL};
-	TreeNode n7 = {" 2.2. À©µµ¿ì ÇÁ·Î±×·¡¹Ö",NULL,NULL};
-	TreeNode n5 = {"2. Àü°ø¼±ÅÃ",&n6,&n7};
+	TreeNode n6 = {" 2.1. í™•ë¥ ê³¼ í†µê³„",NULL,NULL};
+	TreeNode n7 = {" 2.2. ìœˆë„ìš° í”„ë¡œê·¸ëž˜ë°",NULL,NULL};
+	TreeNode n5 = {"2. ì „ê³µì„ íƒ",&n6,&n7};
 
-	TreeNode n1 = {"±èº¸¼º 2020³â ¼ö°­°ú¸ñ",&n2,&n5};
+	TreeNode n1 = {"ê¹€ë³´ì„± 2020ë…„ ìˆ˜ê°•ê³¼ëª©",&n2,&n5};
 
 	TreeNode* root = &n1;
 
 	preorder_iter(root);
 
-}
+} 
