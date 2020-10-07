@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// ì´ì§„íƒìƒ‰íŠ¸ë¦¬
 typedef int element;
 typedef struct TreeNode {
 	element key;
 	struct TreeNode* left, * right;
 }TreeNode;
 
-// ¹İº¹ÀûÀÎ Å½»ö ÇÔ¼ö
+// ë°˜ë³µì ì¸ íƒìƒ‰ í•¨ìˆ˜
 TreeNode* search(TreeNode* node, int key) {
 	while (node != NULL) {
 		if (key == node->key)
@@ -17,10 +18,10 @@ TreeNode* search(TreeNode* node, int key) {
 		else
 			node = node->right;
 	}
-	return NULL; // Å½»ö¿¡ ½ÇÆĞÇÑ °æ¿ì NULL ¹İÈ¯ 
+	return NULL; // íƒìƒ‰ì— ì‹¤íŒ¨í•œ ê²½ìš° NULL ë°˜í™˜ 
 }
 
-// Àç±ÍÀûÀÎ Å½»ö ÇÔ¼ö 
+// ì¬ê·€ì ì¸ íƒìƒ‰ í•¨ìˆ˜ 
 TreeNode* search(TreeNode* node, int key) {
 	if (node == NULL) return NULL;
 	
@@ -39,21 +40,21 @@ TreeNode* new_node(element item) {
 	return p;
 }
 
-// ÀÌÁøÅ½»öÆ®¸®¿¡¼­ÀÇ »ğÀÔ¿¬¼± - ¹İº¹¹® ÀÌ¿ë 
+// ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì—ì„œì˜ ì‚½ì…ì—°ì‚° - ë°˜ë³µë¬¸ ì´ìš© 
 TreeNode* insert_node(TreeNode* root, element key) {
-	TreeNode* p, * t; // p´Â ºÎ¸ğ ³ëµå, t´Â ÇöÀç³ëµå
-	TreeNode* node; // node´Â »õ·Î¿î ³ëµå
+	TreeNode* p, * t; // pëŠ” ë¶€ëª¨ ë…¸ë“œ, tëŠ” í˜„ì¬ë…¸ë“œ
+	TreeNode* node; // nodeëŠ” ìƒˆë¡œìš´ ë…¸ë“œ
 
 	t = root; p = NULL;
 
 	while (t != NULL) { 
 		if (key == t->key) return root;
-		p = t; // t¸¦ ºÎ¸ğ³ëµå·Î ¹Ù²Û´Ù
+		p = t; // të¥¼ ë¶€ëª¨ë…¸ë“œë¡œ ë°”ê¾¼ë‹¤
 		if (key < t->key) t = t->left;
 		else t = t->right;
 	}
 
-	// node¸¦ ÇÏ³ª ¸¸µé¾î key¸¦ Ãß°¡
+	// nodeë¥¼ í•˜ë‚˜ ë§Œë“¤ì–´ keyë¥¼ ì¶”ê°€
 	node = new_node(key);
 
 	if (p == NULL)
@@ -67,19 +68,19 @@ TreeNode* insert_node(TreeNode* root, element key) {
 
 }
 
-// ÀÌÁø Å½»öÆ®¸®¿¡¼­ÀÇ »ğÀÔ ¿¬»ê - Àç±Í »ç¿ë
+// ì´ì§„ íƒìƒ‰íŠ¸ë¦¬ì—ì„œì˜ ì‚½ì… ì—°ì‚° - ì¬ê·€ ì‚¬ìš©
 TreeNode* insert_node(TreeNode* node, int key) {
-	// Æ®¸®°¡ °ø¹éÀÌ¸é »õ·Î¿î ³ëµå¸¦ ¹İÈ¯ÇÑ´Ù. 
+	// íŠ¸ë¦¬ê°€ ê³µë°±ì´ë©´ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë°˜í™˜í•œë‹¤. 
 
 	if (node == NULL) return new_node(key);
 
-	// ±×·¸Áö ¾ÊÀ¸¸é ¼øÈ¯ÀûÀ¸·Î Æ®¸®¸¦ ³»·Á°£´Ù. 
+	// ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ ìˆœí™˜ì ìœ¼ë¡œ íŠ¸ë¦¬ë¥¼ ë‚´ë ¤ê°„ë‹¤. 
 
 	if (key < node->key)
 		node->left = insert_node(node->left, key);
 	else if (key > node->key)
 		node->right = insert_node(node->right, key);
 
-	// º¯°æµÈ ·çÆ® Æ÷ÀÎÅÍ¸¦ ¹İÈ¯ÇÑ´Ù.
+	// ë³€ê²½ëœ ë£¨íŠ¸ í¬ì¸í„°ë¥¼ ë°˜í™˜í•œë‹¤.
 	return node;
 }
