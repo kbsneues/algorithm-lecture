@@ -84,3 +84,4 @@ TreeNode* insert_node(TreeNode* node, int key) {
 	// 변경된 루트 포인터를 반환한다.
 	return node;
 }
+ 
