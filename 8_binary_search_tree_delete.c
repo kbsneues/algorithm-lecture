@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// ÀÌÁøÅ½»öÆ®¸®¿¡¼­ÀÇ »èÁ¦¿¬»ê - ¹Ýº¹¹® ÀÌ¿ë
+// ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì—ì„œì˜ ì‚­ì œì—°ì‚° - ë°˜ë³µë¬¸ ì´ìš©
 
 typedef int element;
 typedef struct TreeNode {
@@ -11,65 +11,65 @@ typedef struct TreeNode {
 
 TreeNode* delete_node(TreeNode* root, element key) {
 	TreeNode* p, * t, * child, * succ, * succ_p;
-	// key¸¦ °®´Â ³ëµå t¸¦ Å½»ö, p´Â tÀÇ ºÎ¸ð³ëµå 
+	// keyë¥¼ ê°–ëŠ” ë…¸ë“œ të¥¼ íƒìƒ‰, pëŠ” tì˜ ë¶€ëª¨ë…¸ë“œ 
 	p = NULL; t = root;
-	// key¸¦ °®´Â ³ëµå t¸¦ Å½»öÇÑ´Ù.
-	while (t != NULL && t->key != key) { // ³ëµå t°¡ ³ÎÀÌ ÀÌ°Å³ª ¿øÇÏ´Â °ªÀ» Ã£À» ¶§ ·çÇÁ Å»Ãâ
+	// keyë¥¼ ê°–ëŠ” ë…¸ë“œ të¥¼ íƒìƒ‰í•œë‹¤.
+	while (t != NULL && t->key != key) { // ë…¸ë“œ tê°€ ë„ì´ ì´ê±°ë‚˜ ì›í•˜ëŠ” ê°’ì„ ì°¾ì„ ë•Œ ë£¨í”„ íƒˆì¶œ
 		p = t;
 		t = (key < t->key) ? t->left : t->right;
 	}
 
-	if(t == NULL) { // Å½»öÀÌ Á¾·áµÈ ½ÃÁ¡¿¡ t°¡ NULLÀÌ¸é Æ®¸® ¾È¿¡ key°¡ ¾øÀ½
+	if(t == NULL) { // íƒìƒ‰ì´ ì¢…ë£Œëœ ì‹œì ì— tê°€ NULLì´ë©´ íŠ¸ë¦¬ ì•ˆì— keyê°€ ì—†ìŒ
 		printf("key is not in the tree");
 		return root;
 	}
 
-	// 2. »èÁ¦ÇÒ ³ëµå °ü·Ã ¸µÅ©¸¦ Á¶Á¤ÇÑ´Ù.
-	// case 1 : ´Ü¸»³ëµåÀÎ °æ¿ì : ºÎ¸ð³ëµå°¡ ÀÖ´ÂÁö ¾ø´ÂÁö¿¡ µû¶ó ´Ù¸£´Ù 
+	// 2. ì‚­ì œí•  ë…¸ë“œ ê´€ë ¨ ë§í¬ë¥¼ ì¡°ì •í•œë‹¤.
+	// case 1 : ë‹¨ë§ë…¸ë“œì¸ ê²½ìš° : ë¶€ëª¨ë…¸ë“œê°€ ìžˆëŠ”ì§€ ì—†ëŠ”ì§€ì— ë”°ë¼ ë‹¤ë¥´ë‹¤ 
 	if ((t->left == NULL) && (t->right == NULL)) {
-		if (p != NULL) { // ºÎ¸ð³ëµåÀÇ ÀÚ½ÄÇÊµå¸¦ NULL·Î ¸¸µç´Ù
+		if (p != NULL) { // ë¶€ëª¨ë…¸ë“œì˜ ìžì‹í•„ë“œë¥¼ NULLë¡œ ë§Œë“ ë‹¤
 			if (p->left == t)
 				p->left = NULL;
 			else p->right = NULL;
 		}
-		else // ¸¸¾à ºÎ¸ð³ëµå°¡ NULLÀÌ¸é?
-			root = NULL; // »èÁ¦µÇ´Â ³ëµå°¡ ·çÆ®
+		else // ë§Œì•½ ë¶€ëª¨ë…¸ë“œê°€ NULLì´ë©´?
+			root = NULL; // ì‚­ì œë˜ëŠ” ë…¸ë“œê°€ ë£¨íŠ¸
 	}
-	// case 2 : ÇÏ³ªÀÇ ÀÚ½Ä¸¸ °¡Áö´Â °æ¿ì 
+	// case 2 : í•˜ë‚˜ì˜ ìžì‹ë§Œ ê°€ì§€ëŠ” ê²½ìš° 
 	else if ((t->left == NULL) || (t->right == NULL)) {
-		// tÀÇ ÀÚ½Ä ³ëµåÀÇ ÁÖ¼Ò¸¦ ¾ò´Â´Ù 
+		// tì˜ ìžì‹ ë…¸ë“œì˜ ì£¼ì†Œë¥¼ ì–»ëŠ”ë‹¤ 
 		child = (t->left != NULL) ? t->left : t->right;
 
-		// ºÎ¸ð¸¦ ÀÚ½Ä°ú ¿¬°á 
+		// ë¶€ëª¨ë¥¼ ìžì‹ê³¼ ì—°ê²° 
 		if (p != NULL) {
 			if (p->left == t) p->left = child;
 			else p->right = child;
 		}
-		else // ¸¸¾à ºÎ¸ð³ëµå°¡ NULLÀÌ¸é »èÁ¦µÇ´Â ³ëµå°¡ ·çÆ® 
+		else // ë§Œì•½ ë¶€ëª¨ë…¸ë“œê°€ NULLì´ë©´ ì‚­ì œë˜ëŠ” ë…¸ë“œê°€ ë£¨íŠ¸ 
 			root = child;
 	}
 
-	// case 3 : µÎ°³ÀÇ ÀÚ½ÄÀ» °¡Áö´Â °æ¿ì 
+	// case 3 : ë‘ê°œì˜ ìžì‹ì„ ê°€ì§€ëŠ” ê²½ìš° 
 
-	else { // ¿À¸¥ÂÊ ¼­ºêÆ®¸®¿¡¼­ ÈÄ¼ÓÀÚ¸¦ Ã£´Â´Ù 
+	else { // ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ í›„ì†ìžë¥¼ ì°¾ëŠ”ë‹¤ 
 		succ_p = t; succ = t->right;
-		// ÈÄ¼ÓÀÚ¸¦ Ã£¾Æ¼­ °è¼Ó ¿ÞÂÊÀ¸·Î ÀÌµ¿ 
+		// í›„ì†ìžë¥¼ ì°¾ì•„ì„œ ê³„ì† ì™¼ìª½ìœ¼ë¡œ ì´ë™ 
 		while (succ->left != NULL) {
 			succ_p = succ; succ = succ->left;
 		}
-		// ÈÄ¼ÓÀÚÀÇ ºÎ¸ð¿Í ÀÚ½ÄÀ» ¿¬°á 
+		// í›„ì†ìžì˜ ë¶€ëª¨ì™€ ìžì‹ì„ ì—°ê²° 
 		if (succ_p->left == succ)
 			succ_p->left = succ->right;
 		else
 			succ_p->right = succ->right;
 
-		// ÈÄ¼ÓÀÚ°¡ °¡Áø Å°°ªÀ» ÇöÀç ³ëµå¿¡ º¹»çÇÑ ´ÙÀ½ 
+		// í›„ì†ìžê°€ ê°€ì§„ í‚¤ê°’ì„ í˜„ìž¬ ë…¸ë“œì— ë³µì‚¬í•œ ë‹¤ìŒ 
 		t->key = succ->key;
-		// ¿ø·¡ÀÇ ÈÄ¼ÓÀÚ »èÁ¦¸¦ À§ÇØ Æ÷ÀÎÅÍ º¯°æ 
+		// ì›ëž˜ì˜ í›„ì†ìž ì‚­ì œë¥¼ ìœ„í•´ í¬ì¸í„° ë³€ê²½ 
 		t = succ;
 	}
 	free(t);
-	return root; // 3. »èÁ¦ÇÒ ³ëµå¸¦ free ½ÃÅ°°í, root¸¦ ¹ÝÈ¯ÇÑ´Ù
-}
+	return root; // 3. ì‚­ì œí•  ë…¸ë“œë¥¼ free ì‹œí‚¤ê³ , rootë¥¼ ë°˜í™˜í•œë‹¤
+} 
 
 
